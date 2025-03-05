@@ -108,8 +108,36 @@ public class LinkedList<T> {
             }
         }
     }
-    
-        public String toString() {
+    /**
+     * Inserts the specified separator between every element of this list.
+     * 
+     * @param sep the separator to intersperse between elements of this list
+     */
+    public void intersperse(T sep) {
+        if (first == null) {
+            return;
+        }
+        Node<T> current = first;
+        while (current != null && current.next != null) {
+            Node<T> sepNode = new Node<>(sep, current.next);
+            current.next = sepNode;
+            current = sepNode.next;
+        }
+    }
+    /**
+     * Returns the maximum element found in the list.
+     * 
+     * This method cannot be implemented for a generic type T unless T implements Comparable<T>.
+     * Since our generic list does not restrict T to types that are comparable, there is no way
+     * to determine the maximum element. Therefore, this method is unsupported.
+     *
+     * @return the maximum element in the list
+     * @throws UnsupportedOperationException always, because the operation cannot be implemented
+     */
+    public T maximum() {
+        throw new UnsupportedOperationException();
+    }
+    public String toString() {
         if (first == null) {
             return "[]";
         } else {
@@ -123,10 +151,10 @@ public class LinkedList<T> {
             return result;
         }
     }
-        /**
-         * This operation cannot be implemented because we don't know how to compare letter with integer or other parameter of different.
-         */
-        public void insertionSort(){
+    /**
+    * This operation cannot be implemented because we don't know how to compare letter with integer or other parameter of different.
+    */
+    public void insertionSort(){
             throw new UnsupportedOperationException();
         }
     
